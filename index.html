@@ -272,7 +272,102 @@ dialog::backdrop{background:#020812c9;backdrop-filter:blur(6px)}
   .price{font-size:16px}
   .add-btn{padding:9px 8px}
   .banner{margin:20px 4% 45px;padding:23px}
+
+/* ADVANCED BLOXHUB PRODUCT EXPERIENCE */
+
+.product {
+  position: relative;
+  isolation: isolate;
 }
+
+.product-info {
+  position: relative;
+}
+
+.product-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.product-actions button {
+  flex: 1;
+}
+
+.details-btn {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #10283a;
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  transition: .2s;
+}
+
+.details-btn:hover {
+  border-color: var(--cyan);
+  background: #15374b;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: white;
+  background: #071521cc;
+  font-size: 20px;
+  z-index: 2;
+  transition: transform .2s, color .2s;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+.favorite-btn.active {
+  color: #ff6cae;
+  border-color: #ff6cae;
+}
+
+.product-art {
+  position: relative;
+}
+
+.product-dialog-art {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: radial-gradient(circle, #9b5cff35, #0b2030 70%);
+  font-size: 76px;
+}
+
+.product-dialog-price {
+  font-size: 28px;
+  font-weight: 900;
+  margin: 18px 0;
+}
+
+.product-dialog-meta {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .product-dialog-art span {
+    animation: float 4s ease-in-out infinite;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -380,6 +475,34 @@ dialog::backdrop{background:#020812c9;backdrop-filter:blur(6px)}
     <div class="cart-total" id="cartTotal">Total: $0.00</div>
     <p class="cart-note">This is a demo cart. No order is created and no payment is collected. A secure backend and payment integration are needed for real checkout.</p>
     <button class="pill" id="checkoutButton" style="width:100%;margin-top:15px">Continue to checkout</button>
+  </div>
+</dialog>
+
+<dialog id="productDialog">
+  <div class="dialog-body">
+    <div class="dialog-head">
+      <h2>Item details</h2>
+      <button class="filter" id="closeProduct">✕ Close</button>
+    </div>
+
+    <div class="product-dialog-art">
+      <span id="detailEmoji">🎮</span>
+    </div>
+
+    <div class="overline" id="detailGame">GAME</div>
+    <h2 id="detailName">Product name</h2>
+    <p id="detailDescription" class="muted"></p>
+
+    <div class="product-dialog-price" id="detailPrice">$0.00</div>
+
+    <div class="product-dialog-meta">
+      Listing status: <strong>Demo listing</strong><br>
+      Inventory and delivery have not been verified.
+    </div>
+
+    <button class="pill" id="detailAdd" style="width:100%">
+      Add to cart
+    </button>
   </div>
 </dialog>
 
